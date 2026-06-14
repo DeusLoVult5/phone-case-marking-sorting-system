@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.25.xsd">
+	<ProfileHeader>
+		<ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+		<ProfileRevision>1.00</ProfileRevision>
+		<ProfileName>Device Profile for PROFINET Devices</ProfileName>
+		<ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+		<ProfileClassID>Device</ProfileClassID>
+		<ISO15745Reference>
+			<ISO15745Part>4</ISO15745Part>
+			<ISO15745Edition>1</ISO15745Edition>
+			<ProfileTechnology>GSDML</ProfileTechnology>
+		</ISO15745Reference>
+	</ProfileHeader>
+	<ProfileBody>
+		<DeviceIdentity VendorID="0x002A" DeviceID="0x0023">
+			<InfoText TextId="TOK_DevIdent_InfoText"/>
+			<VendorName Value="GSIO"/>
+		</DeviceIdentity>
+		<DeviceFunction>
+			<Family MainFamily="I/O" ProductFamily="GSIO-IO"/>
+		</DeviceFunction>
+		<ApplicationProcess>
+			<DeviceAccessPointList>
+	            <!-- ============================================ -->
+	            <!--                  DAP2: Standard no MRP       -->
+	            <!-- ============================================ -->
+				<DeviceAccessPointItem ID="DAP 2" PhysicalSlots="0..1" ModuleIdentNumber="0x00000002" MinDeviceInterval="8" ImplementationType="ERTEC200P" DNS_CompatibleName="PN-DEV" ExtendedAddressAssignmentSupported="true" FixedInSlots="0" ObjectUUID_LocalIndex="1" MultipleWriteSupported="true"  DeviceAccessSupported="true" MaxSupportedRecordSize="8192" NameOfStationNotTransferable="true" ParameterizationSpeedupSupported="false"   PowerOnToCommReady="1500" RequiredSchemaVersion="V2.1">
+					<ModuleInfo CategoryRef="ID_ERTEC200PDEVKit">
+						<Name TextId="TOK_GSVT-PN_Standard_no_MRP"/>
+						<InfoText TextId="TOK_ModInfo_InfoTextId_DAP2"/>
+						<VendorName Value="GSIO"/>
+						<OrderNumber Value="PNIO Dev"/>
+						<!-- optional keyword:  <HardwareRelease Value="0002"/>    -->
+						<!-- optional keyword:  <SoftwareRelease Value="V4.3" />  -->
+					</ModuleInfo>
+					<SubslotList>
+						<SubslotItem SubslotNumber="32768" TextId="TOK_Subslot_8000"/>
+						<SubslotItem SubslotNumber="32769" TextId="TOK_Subslot_8001"/>
+						<SubslotItem SubslotNumber="32770" TextId="TOK_Subslot_8002"/>
+					</SubslotList>
+					<IOConfigData MaxInputLength="256" MaxOutputLength="256"/>
+					<UseableModules>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_00" FixedInSlots="1"/>
+					</UseableModules>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="DAP 2" SubmoduleIdentNumber="0x0001" Writeable_IM_Records="1 2 3 4">
+							<IOData/> 
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="7" TransferSequence="0">
+								  <Name TextId="General head parameters"/>
+								  <Const Data="0x04,0x01,0x00,0x00,0x03,0x02,0x00" ByteOffset="0"/>
+								  <Ref ValueItemTarget="PN bus Err Output EN" DataType="BitArea" ByteOffset="2" BitOffset="0" BitLength="2" DefaultValue="0" AllowedValues="0 1" Changeable="true" Visible="true" TextId="PN bus Err Output EN"/>
+								  <Ref ValueItemTarget="DO Reaction to CPU STOP" DataType="BitArea" ByteOffset="3" BitOffset="0" BitLength="2" DefaultValue="0" AllowedValues="0..2" Changeable="true" Visible="true" TextId="DO Reaction to CPU STOP"/>
+								  
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo><Name TextId="TOK_GSVT-PN_Standard_no_MRP"/><InfoText TextId="TOK_ModInfo_InfoTextId_DAP2"/></ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+					<SystemDefinedSubmoduleList>
+						<InterfaceSubmoduleItem ID="IDS_2I" SubslotNumber="32768" SubmoduleIdentNumber="0x0002" SupportedRT_Classes="RT_CLASS_1;RT_CLASS_2" TextId="TOK_DAP_InterfaceModule"  SupportedProtocols="SNMP;LLDP" SupportedMibs="MIB2" NetworkComponentDiagnosisSupported="true" PTP_BoundarySupported="true" DCP_BoundarySupported="true" DCP_HelloSupported="true">
+							<SynchronisationMode SupportedRole="SyncSlave" MaxLocalJitter="50" T_PLL_MAX="1000" />
+							<ApplicationRelations NumberOfAR="2"  NumberOfAdditionalInputCR="0" NumberOfAdditionalMulticastProviderCR="0" NumberOfAdditionalOutputCR="0" NumberOfMulticastConsumerCR="0">
+								<TimingProperties SendClock="8 16 32 64 128" ReductionRatio="1 2 4 8 16 32 64 128 256 512"/>
+							</ApplicationRelations>
+						</InterfaceSubmoduleItem>
+						<PortSubmoduleItem ID="IDS_2P1" SubslotNumber="32769" SubmoduleIdentNumber="0x0003" MAUTypes="16" CheckMAUTypeSupported="true" TextId="TOK_Port1" MaxPortRxDelay="198" MaxPortTxDelay="6" PortDeactivationSupported="true" LinkStateDiagnosisCapability="Up+Down" SupportsRingportConfig="false" IsDefaultRingport="false"/>
+						<PortSubmoduleItem ID="IDS_2P2" SubslotNumber="32770" SubmoduleIdentNumber="0x0003" MAUTypes="16" CheckMAUTypeSupported="true" TextId="TOK_Port2" MaxPortRxDelay="198" MaxPortTxDelay="6" PortDeactivationSupported="true" LinkStateDiagnosisCapability="Up+Down" SupportsRingportConfig="false" IsDefaultRingport="false"/>
+					</SystemDefinedSubmoduleList>
+					<Graphics>
+						<GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="ID_Graph_2"/>
+					</Graphics>
+				</DeviceAccessPointItem>
+			</DeviceAccessPointList>
+	        <!-- ============================================ -->
+	        <!--            List of modules                   -->
+	        <!-- ============================================ -->
+			<ModuleList>
+				<!-- ================================== -->
+	            <!--    Local 16DI/32DO Module				     -->
+	            <!--   (param-rec, support PROFIenergy)-->
+	            <!-- ================================== -->
+				<ModuleItem ID="ID_Mod_00" ModuleIdentNumber="0x00000055">
+					<ModuleInfo >
+						<Name TextId="TOK_TextId_Module_32DI32DO"/>
+						<InfoText TextId="empty"/>
+						<!-- optional keyword:  <HardwareRelease Value="0002" />   -->
+						<!-- optional keyword:  <SoftwareRelease Value="V4.3" />  -->
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="01" SubmoduleIdentNumber="0x0000" API="0">
+							<IOData>
+								<Input>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Inputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Inputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Inputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Inputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+								</Input>
+								<Output>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Outputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Outputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Outputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+									<DataItem DataType="Unsigned8" UseAsBits="true" TextId="Outputs">
+										<BitDataItem BitOffset="0" TextId="Bit 0"/>
+										<BitDataItem BitOffset="1" TextId="Bit 1"/>
+										<BitDataItem BitOffset="2" TextId="Bit 2"/>
+										<BitDataItem BitOffset="3" TextId="Bit 3"/>
+										<BitDataItem BitOffset="4" TextId="Bit 4"/>
+										<BitDataItem BitOffset="5" TextId="Bit 5"/>
+										<BitDataItem BitOffset="6" TextId="Bit 6"/>
+										<BitDataItem BitOffset="7" TextId="Bit 7"/>
+									</DataItem>
+								</Output>
+							</IOData>
+							<ModuleInfo><Name TextId="TOK_TextId_Module_32DI32DO"/><InfoText TextId="empty"/></ModuleInfo>
+							<PROFIenergy />
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+	        </ModuleList>
+			
+			<ValueList>
+				<ValueItem ID="PN bus Err Output EN">
+				  <Assignments>
+					<Assign Content="0" TextId="DISABLE"/>
+					<Assign Content="1" TextId="ENABLE"/>
+				  </Assignments>
+				</ValueItem>
+				<ValueItem ID="DO Reaction to CPU STOP">
+				  <Assignments>
+					<Assign Content="0" TextId="KEEP_LAST"/>
+					<Assign Content="1" TextId="SUB_VAL_OFF"/>
+					<Assign Content="2" TextId="SUB_VAL_ON"/>
+				  </Assignments>
+				</ValueItem>
+				<ValueItem ID="AO Reaction to CPU STOP">
+				  <Assignments>
+					<Assign Content="0" TextId="KEEP_LAST"/>
+					<Assign Content="1" TextId="SUB_VAL_OFF"/>
+				  </Assignments>
+				</ValueItem>
+				<ValueItem ID="Module Err DI EN">
+				  <Assignments>
+					<Assign Content="0" TextId="DISABLE"/>
+					<Assign Content="1" TextId="ENABLE"/>
+				  </Assignments>
+				</ValueItem>
+			</ValueList>
+	        <!-- ============================================ -->
+	        <!--       Channel diagnosis list                 -->
+	        <!-- ============================================ -->
+			<ChannelDiagList>
+				<ChannelDiagItem ErrorType="16">
+					<Name TextId="TOK_Name_ErrorType16"/>
+					<Help TextId="TOK_HelpName_ErrorType16"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="17">
+					<Name TextId="TOK_Name_ErrorType17"/>
+					<Help TextId="TOK_HelpName_ErrorType17"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="18">
+					<Name TextId="TOK_Name_ErrorType18"/>
+					<Help TextId="TOK_HelpName_ErrorType18"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="20">
+					<Name TextId="TOK_Name_ErrorType20"/>
+					<Help TextId="TOK_HelpName_ErrorType20"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="21">
+					<Name TextId="TOK_Name_ErrorType21"/>
+					<Help TextId="TOK_HelpName_ErrorType21"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="22">
+					<Name TextId="TOK_Name_ErrorType22"/>
+					<Help TextId="TOK_HelpName_ErrorType22"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="23">
+					<Name TextId="TOK_Name_ErrorType23"/>
+					<Help TextId="TOK_HelpName_ErrorType23"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="24">
+					<Name TextId="TOK_Name_ErrorType24"/>
+					<Help TextId="TOK_HelpName_ErrorType24"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="25">
+					<Name TextId="TOK_Name_ErrorType25"/>
+					<Help TextId="TOK_HelpName_ErrorType25"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="26">
+					<Name TextId="TOK_Name_ErrorType26"/>
+					<Help TextId="TOK_HelpName_ErrorType26"/>
+				</ChannelDiagItem>
+			</ChannelDiagList>
+			<GraphicsList>	
+				<GraphicItem ID="ID_Graph_2" GraphicFile="GSDML-002A-0023-GSVT-A2"/>
+			</GraphicsList>
+			<CategoryList>
+				<CategoryItem ID="ID_ERTEC200PDEVKit" TextId="TOK_Category_ERTEC200PDEVKit"/>
+				
+			</CategoryList>
+	        <!-- ============================================ -->
+	        <!--     language dependent text lists            -->
+	        <!-- ============================================ -->
+			<ExternalTextList>
+	            <!-- ============================= -->
+	            <!--    primary language: english  -->
+	            <!-- ============================= -->
+				<PrimaryLanguage>
+					<Text TextId="TOK_DevIdent_InfoText" Value="GSVT-A2-PNC"/>
+					<Text TextId="GSIO" Value="GSIO"/>
+					<!--DAP - ERTEC 200p Devkit-->
+					<Text TextId="TOK_Category_ERTEC200PDEVKit" Value="GSVT-A2-xx-PNC"/>
+					<Text TextId="TOK_GSVT-PN_Standard_no_MRP" Value="GSVT-A2"/>
+					<Text TextId="TOK_POF" Value="POF"/>
+					<Text TextId="TOK_ModInfo_InfoTextId_DAP1" Value="GSVT-A2, for pnio ontroller without physical device"/>
+					<Text TextId="TOK_ModInfo_InfoTextId_DAP2" Value="GSVT-A2, standard, no MRP, shared device"/>
+					<Text TextId="TOK_ModInfo_InfoTextId_DAP3" Value="GSVT-A2, standard, MRP, shared device"/>
+					<!--port name-->
+					<Text TextId="TOK_Subslot_8000" Value="X1"/>
+					<Text TextId="TOK_Subslot_8001" Value="X1 P1"/>
+					<Text TextId="TOK_Subslot_8002" Value="X1 P2"/>
+					<Text TextId="TOK_DAP_InterfaceModule" Value="Interface"/>
+					<Text TextId="TOK_Port1" Value="Port 1"/>
+					<Text TextId="TOK_Port2" Value="Port 2"/>
+					<Text TextId="TOK_Port1_POF" Value="Port 1"/>
+					<Text TextId="TOK_Port2_POF" Value="Port 2"/>
+					<!--Baugruppeneinteilung-->
+					
+					<!--module name-->
+					<Text TextId="TOK_TextId_Module_32DI32DO" Value="32DI/32DO"/>
+				
+					<!--module info name-->
+					<Text TextId="empty" Value=""/>
+					
+					
+					
+					<!--dataitem name-->
+					<Text Value="Inputs" TextId="Inputs"/>
+					<Text Value="Outputs" TextId="Outputs"/>
+					<!--errortype name-->
+					<Text TextId="TOK_Name_ErrorType16" Value="parameter assignment error"/>
+					<Text TextId="TOK_Name_ErrorType17" Value="Power supply fault "/>
+					<Text TextId="TOK_Name_ErrorType18" Value="fuse blown  "/>
+					<Text TextId="TOK_Name_ErrorType20" Value="ground fault"/>
+					<Text TextId="TOK_Name_ErrorType21" Value="reference point lost"/>
+					<Text TextId="TOK_Name_ErrorType22" Value="process event lost / sampling error"/>
+					<Text TextId="TOK_Name_ErrorType23" Value="threshold warning"/>
+					<Text TextId="TOK_Name_ErrorType24" Value="output disabled"/>
+					<Text TextId="TOK_Name_ErrorType25" Value="safety-related event "/>
+					<Text TextId="TOK_Name_ErrorType26" Value="external fault"/>
+					<Text TextId="TOK_HelpName_ErrorType16" Value="parameter assignment error"/>
+					<Text TextId="TOK_HelpName_ErrorType17" Value="Power supply fault "/>
+					<Text TextId="TOK_HelpName_ErrorType18" Value="fuse blown  "/>
+					<Text TextId="TOK_HelpName_ErrorType20" Value="ground fault"/>
+					<Text TextId="TOK_HelpName_ErrorType21" Value="reference point lost"/>
+					<Text TextId="TOK_HelpName_ErrorType22" Value="process event lost / sampling error"/>
+					<Text TextId="TOK_HelpName_ErrorType23" Value="threshold warning"/>
+					<Text TextId="TOK_HelpName_ErrorType24" Value="output disabled"/>
+					<Text TextId="TOK_HelpName_ErrorType25" Value="safety-related event "/>
+					<Text TextId="TOK_HelpName_ErrorType26" Value="external fault"/>
+					<!--other text definitions-->
+					<Text TextId="T_general_parameter" Value="general parameter"/>
+					<!--restliche Bezeichner-->
+					<Text TextId="Bit 0" Value="Bit 0"/>
+					<Text TextId="Bit 1" Value="Bit 1"/>
+					<Text TextId="Bit 2" Value="Bit 2"/>
+					<Text TextId="Bit 3" Value="Bit 3"/>
+					<Text TextId="Bit 4" Value="Bit 4"/>
+					<Text TextId="Bit 5" Value="Bit 5"/>
+					<Text TextId="Bit 6" Value="Bit 6"/>
+					<Text TextId="Bit 7" Value="Bit 7"/>
+					<Text TextId="Bit 8" Value="Bit 8"/>
+					<Text TextId="Bit 9" Value="Bit 9"/>
+					<Text TextId="Bit 10" Value="Bit 10"/>
+					<Text TextId="Bit 11" Value="Bit 11"/>
+					<Text TextId="Bit 12" Value="Bit 12"/>
+					<Text TextId="Bit 13" Value="Bit 13"/>
+					<Text TextId="Bit 14" Value="Bit 14"/>
+					<Text TextId="Bit 15" Value="Bit 15"/>
+					<Text TextId="Bit 16" Value="Bit 16"/>
+					<Text TextId="Bit 17" Value="Bit 17"/>
+					<Text TextId="Bit 18" Value="Bit 18"/>
+					<Text TextId="Bit 19" Value="Bit 19"/>
+					<Text TextId="Bit 20" Value="Bit 20"/>
+					<Text TextId="Bit 21" Value="Bit 21"/>
+					<Text TextId="Bit 22" Value="Bit 22"/>
+					<Text TextId="Bit 23" Value="Bit 23"/>
+					<Text TextId="Bit 24" Value="Bit 24"/>
+					<Text TextId="Bit 25" Value="Bit 25"/>
+					<Text TextId="Bit 26" Value="Bit 26"/>
+					<Text TextId="Bit 27" Value="Bit 27"/>
+					<Text TextId="Bit 28" Value="Bit 28"/>
+					<Text TextId="Bit 29" Value="Bit 29"/>
+					<Text TextId="Bit 30" Value="Bit 30"/>
+					<Text TextId="Bit 31" Value="Bit 31"/>
+					<Text Value="O-channel 0" TextId="O-channel 0"/>
+					<Text Value="O-channel 1" TextId="O-channel 1"/>
+					<Text Value="O-channel 2" TextId="O-channel 2"/>
+					<Text Value="O-channel 3" TextId="O-channel 3"/>
+					<Text Value="O-channel 4" TextId="O-channel 4"/>
+					<Text Value="O-channel 5" TextId="O-channel 5"/>
+					<Text Value="O-channel 6" TextId="O-channel 6"/>
+					<Text Value="O-channel 7" TextId="O-channel 7"/>
+					<Text Value="O-channel 8" TextId="O-channel 8"/>
+					<Text Value="O-channel 9" TextId="O-channel 9"/>
+					<Text Value="O-channel 10" TextId="O-channel 10"/>
+					<Text Value="O-channel 11" TextId="O-channel 11"/>
+					<Text Value="O-channel 12" TextId="O-channel 12"/>
+					<Text Value="O-channel 13" TextId="O-channel 13"/>
+					<Text Value="O-channel 14" TextId="O-channel 14"/>
+					<Text Value="O-channel 15" TextId="O-channel 15"/>
+					<Text Value="I-channel 0" TextId="I-channel 0"/>
+					<Text Value="I-channel 1" TextId="I-channel 1"/>
+					<Text Value="I-channel 2" TextId="I-channel 2"/>
+					<Text Value="I-channel 3" TextId="I-channel 3"/>
+					<Text Value="I-channel 4" TextId="I-channel 4"/>
+					<Text Value="I-channel 5" TextId="I-channel 5"/>
+					<Text Value="I-channel 6" TextId="I-channel 6"/>
+					<Text Value="I-channel 7" TextId="I-channel 7"/>
+					<Text Value="I-channel 8" TextId="I-channel 8"/>
+					<Text Value="I-channel 9" TextId="I-channel 9"/>
+					<Text Value="I-channel 10" TextId="I-channel 10"/>
+					<Text Value="I-channel 11" TextId="I-channel 11"/>
+					<Text Value="I-channel 12" TextId="I-channel 12"/>
+					<Text Value="I-channel 13" TextId="I-channel 13"/>
+					<Text Value="I-channel 14" TextId="I-channel 14"/>
+					<Text Value="I-channel 15" TextId="I-channel 15"/>
+					<Text Value="Module Configuration parameters" TextId="General head parameters"/>
+					<Text Value="PN bus Err Output EN" TextId="PN bus Err Output EN"/>
+					<Text Value="DO Reaction to CPU STOP" TextId="DO Reaction to CPU STOP"/>
+					<Text Value="AO Reaction to CPU STOP" TextId="AO Reaction to CPU STOP"/>
+					<Text Value="Module Err DI Reset EN" TextId="Module Err DI EN"/>
+					
+					<Text Value="DISABLE" TextId="DISABLE"/>
+					<Text Value="ENABLE" TextId="ENABLE"/>
+					
+					
+					<Text Value="Keep last value" TextId="KEEP_LAST"/>
+					<Text Value="Substitute a value(ON)" TextId="SUB_VAL_ON"/>
+					<Text Value="Substitute a value(OFF)" TextId="SUB_VAL_OFF"/>
+				</PrimaryLanguage>
+	            
+			</ExternalTextList>
+		</ApplicationProcess>
+	</ProfileBody>
+</ISO15745Profile>

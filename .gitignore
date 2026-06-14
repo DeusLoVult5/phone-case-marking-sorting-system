@@ -1,0 +1,19 @@
+# Claude Code local settings
+.claude/
+
+# VS Code workspace
+.vscode/
+
+# Logs
+*.log
+Logs/
+
+# Temporary files
+TMP/
+
+# TIA Portal lock/temp files
+System/~*
+
+# OS generated
+Thumbs.db
+Desktop.ini
